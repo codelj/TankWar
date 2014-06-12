@@ -9,9 +9,9 @@ import java.awt.event.WindowEvent;
 
 public class TankClientMy extends Frame{
 	
-	
+/*	
 
-
+*/
 	private static final long serialVersionUID = 1L;
 	private static final int Frame_Width = 800;
 	private static final int Frame_length = 600;
