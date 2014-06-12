@@ -17,19 +17,20 @@ public class TankClientMy extends Frame{
 	private static final int Frame_length = 600;
 	
 	Image offScreenImage = null;
-	
+	Tank myTank = new Tank(50, 50);
 	
 	int x = 100, y = 100;
 	
 	public void paint(Graphics g){
 //		Color c = g.getColor();
-		g.setColor(Color.red);
+//		g.setColor(Color.red);
 //		g.fillRoundRect(x, y, 30, 30, 10, 10);
-		g.fillOval(x, y, 30, 30);
+//		g.fillOval(myTank.x, myTank.y, 30, 30);
 //		g.setColor(c);
-		
+//		
 //		y += 5;
 //		x += 5;
+		myTank.draw(g);
 	}
 
 	@Override
@@ -98,30 +99,30 @@ public class TankClientMy extends Frame{
 		@Override
 		public void keyPressed(KeyEvent e) {
 			// TODO Auto-generated method stub
+			myTank.keyPressed(e);
 //			super.keyPressed(e);
-			
-			int key = e.getKeyCode();
-			
-			switch (key) {
-			case KeyEvent.VK_RIGHT:
-				x += 5;
-				break;
-			case KeyEvent.VK_LEFT:
-				x -= 5;
-				break;
-			case KeyEvent.VK_UP:
-				y -= 5;
-				break;
-			case KeyEvent.VK_DOWN:
-				y += 5;
-				break;
-			}
+//			int key = e.getKeyCode();
+//			
+//			switch (key) {
+//			case KeyEvent.VK_RIGHT:
+//				x += 5;
+//				break;
+//			case KeyEvent.VK_LEFT:
+//				x -= 5;
+//				break;
+//			case KeyEvent.VK_UP:
+//				y -= 5;
+//				break;
+//			case KeyEvent.VK_DOWN:
+//				y += 5;
+//				break;
+//			}
 		}
 
 		@Override
 		public void keyReleased(KeyEvent e) {
 			// TODO Auto-generated method stub
-			super.keyReleased(e);
+			myTank.keyReleased(e);
 		}
 	}
 	
