@@ -7,15 +7,14 @@ import com.tank.my.Tank.Direction;
 
 public class Missile {
 	
+	public static final int XSPEED = 10;
+	public static final int YSPEED = 10;
 	
-	private static final int XSPEED = 10;
-	private static final int YSPEED = 10;
+	public static final int WIDTH = 10;
+	public static final int HEIGHT = 10;
 	
 	int x,y;
-	Tank.Direction dir;
-//	private Missile m = new Missile(50, 50, Tank.Direction.R);
-	
-	
+	private Tank.Direction dir;
 	
 	
 	
@@ -25,20 +24,19 @@ public class Missile {
 		this.dir = dir;
 	}
 	
-	public void draw(Graphics g){
+	public 
+	void 
+	draw(Graphics g){
 		Color c = g.getColor();
 		g.setColor(Color.black);
-		g.fillOval(x, y, 10, 10);
+		g.fillOval(x, y, WIDTH, HEIGHT);
 		g.setColor(c);
-		
 		move();
-		
-		
-		
 	}
 
-	private void move() {
-		
+	private 
+	void 
+	move() {
 		switch(dir){
 		case L:
 			x -= XSPEED;
@@ -69,7 +67,6 @@ public class Missile {
 			y += YSPEED;
 			break;
 		}
-		
 	}
 	
 	

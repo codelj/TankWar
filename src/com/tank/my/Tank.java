@@ -5,8 +5,10 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
 public class Tank {
-	private static final int XSPEED = 5;
-	private static final int YSPEED = 5;
+	public static final int XSPEED = 5;
+	public static final int YSPEED = 5;
+	public static final int WIDTH = 30;
+	public static final int HEIGHT = 30;
 	
 	int x, y;
 	private boolean bL = false;
@@ -23,21 +25,24 @@ public class Tank {
 	
 
 	public Tank(int x, int y, TankClientMy tc ) {
-//		super();
 		this.x = x;
 		this.y = y;
 		this.tc = tc;
 	}
 	
-	public void draw(Graphics g){
+	public 
+	void 
+	draw(Graphics g){
 		Color c = g.getColor();
 		g.setColor(Color.red);
 //		g.fillRoundRect(x, y, 30, 30, 10, 10);
-		g.fillOval(x, y, 30, 30);
+		g.fillOval(x, y, WIDTH, HEIGHT);
 		g.setColor(c);
 	}
 	
-	public void keyPressed(KeyEvent e){
+	public 
+	void 
+	keyPressed(KeyEvent e){
 		int key = e.getKeyCode();
 		
 		switch (key) {
@@ -61,7 +66,9 @@ public class Tank {
 		move();
 	}
 	
-	void move(){
+	private 
+	void 
+	move(){
 		switch(dir){
 		case L:
 			x -= XSPEED;
@@ -94,11 +101,12 @@ public class Tank {
 		case STOP:
 			break;
 		}
-		
 		locateDirection();
 	}
 	
-	void locateDirection(){
+	private
+	void 
+	locateDirection(){
 		if(bL && !bU && !bR && !bD) 
 			dir = Direction.L;
 		else if(bL && bU && !bR && !bD) 
@@ -119,33 +127,34 @@ public class Tank {
 			dir = Direction.STOP;
 	}
 	
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
+	public 
+	void 
+	keyReleased(KeyEvent e) {
 		int key = e.getKeyCode();
 		
 		switch (key) {
 		case KeyEvent.VK_RIGHT:
-//			x += 5;
 			bR = false;
 			break;
 		case KeyEvent.VK_LEFT:
-//			x -= 5;
 			bL = false;
 			break;
 		case KeyEvent.VK_UP:
-//			y -= 5;
 			bU = false;
 			break;
 		case KeyEvent.VK_DOWN:
-//			y += 5;
 			bD = false;
 			break;
 		}
 	}
 	
-	private Missile fire(){
+	private 
+	Missile 
+	fire(){
+		int x = this.x + Tank.WIDTH/2 - Missile.WIDTH/2;
+		int y = this.y + Tank.HEIGHT/2 - Missile.HEIGHT/2;
 		if(m == null)
-			m = new Missile(x, y, Tank.Direction.R);
+			m = new Missile(x, y, dir);
 		return m;
 	}
 	

@@ -11,25 +11,27 @@ public class TankClientMy extends Frame{
 /*	
 
 */
-	private static final long serialVersionUID = 1L;
-	private static final int Frame_Width = 800;
-	private static final int Frame_length = 600;
+	public static final long serialVersionUID = 1L;
+	public static final int Frame_Width = 800;
+	public static final int Frame_length = 600;
 	
-	Image offScreenImage = null;
-	Tank myTank = new Tank(50, 50, this);
+	private Image offScreenImage = null;
+	private Tank myTank = new Tank(50, 50, this);
 	Missile m = null;
 	
-	int x = 100, y = 100;
 	
-	public void paint(Graphics g){
+	public 
+	void 
+	paint(Graphics g){
 		if(m != null)
 			m.draw(g);
 		myTank.draw(g);
-//		m = null;
 	}
 
 	@Override
-	public void update(Graphics g) {
+	public 
+	void 
+	update(Graphics g) {
 		if(offScreenImage == null)
 			offScreenImage = this.createImage(Frame_Width, Frame_length);
 		
@@ -42,7 +44,9 @@ public class TankClientMy extends Frame{
 		g.drawImage(offScreenImage, 0, 0, null);
 	}
 	
-	public void lauchFrame(){
+	public 
+	void 
+	lauchFrame(){
 		this.setLocation(200,100);
 		this.setSize(Frame_Width,Frame_length);
 		this.setResizable(false);
@@ -64,7 +68,10 @@ public class TankClientMy extends Frame{
 		new Thread(new PaintThread()).start();
 	}
 	
-	public static void main(String[] args) {
+	public 
+	static 
+	void 
+	main(String[] args) {
 		new TankClientMy().lauchFrame();
 	}
 	
@@ -84,7 +91,6 @@ public class TankClientMy extends Frame{
 	}
 	
 	private class KeyMonitor extends KeyAdapter{
-
 //		@Override
 //		public void keyTyped(KeyEvent e) {
 //			// TODO Auto-generated method stub
@@ -92,14 +98,16 @@ public class TankClientMy extends Frame{
 //		}
 
 		@Override
-		public void keyPressed(KeyEvent e) {
-			// TODO Auto-generated method stub
+		public 
+		void 
+		keyPressed(KeyEvent e) {
 			myTank.keyPressed(e);
 		}
 
 		@Override
-		public void keyReleased(KeyEvent e) {
-			// TODO Auto-generated method stub
+		public 
+		void 
+		keyReleased(KeyEvent e) {
 			myTank.keyReleased(e);
 		}
 	}
