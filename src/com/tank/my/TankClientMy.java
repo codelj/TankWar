@@ -16,14 +16,16 @@ public class TankClientMy extends Frame{
 	private static final int Frame_length = 600;
 	
 	Image offScreenImage = null;
-	Tank myTank = new Tank(50, 50);
-	Missle m = new Missle(50, 50, Tank.Direction.R);
+	Tank myTank = new Tank(50, 50, this);
+	Missile m = null;
 	
 	int x = 100, y = 100;
 	
 	public void paint(Graphics g){
-		m.draw(g);
+		if(m != null)
+			m.draw(g);
 		myTank.draw(g);
+//		m = null;
 	}
 
 	@Override
@@ -83,11 +85,11 @@ public class TankClientMy extends Frame{
 	
 	private class KeyMonitor extends KeyAdapter{
 
-		@Override
-		public void keyTyped(KeyEvent e) {
-			// TODO Auto-generated method stub
-			super.keyTyped(e);
-		}
+//		@Override
+//		public void keyTyped(KeyEvent e) {
+//			// TODO Auto-generated method stub
+//			super.keyTyped(e);
+//		}
 
 		@Override
 		public void keyPressed(KeyEvent e) {

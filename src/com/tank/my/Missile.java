@@ -5,7 +5,7 @@ import java.awt.Graphics;
 
 import com.tank.my.Tank.Direction;
 
-public class Missle {
+public class Missile {
 	
 	
 	private static final int XSPEED = 10;
@@ -13,8 +13,13 @@ public class Missle {
 	
 	int x,y;
 	Tank.Direction dir;
+//	private Missile m = new Missile(50, 50, Tank.Direction.R);
 	
-	public Missle(int x, int y, Direction dir) {
+	
+	
+	
+	
+	public Missile(int x, int y, Direction dir) {
 		this.x = x;
 		this.y = y;
 		this.dir = dir;

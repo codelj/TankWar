@@ -14,14 +14,19 @@ public class Tank {
 	private boolean bR = false;
 	private boolean bD = false;
 	
+	TankClientMy tc = null;
+	Missile m = null;
+	
+	
 	enum Direction {L, LU, U, RU, R, RD, D, LD,STOP};
 	private Direction dir = Direction.STOP;
 	
 
-	public Tank(int x, int y) {
+	public Tank(int x, int y, TankClientMy tc ) {
 //		super();
 		this.x = x;
 		this.y = y;
+		this.tc = tc;
 	}
 	
 	public void draw(Graphics g){
@@ -47,6 +52,9 @@ public class Tank {
 			break;
 		case KeyEvent.VK_DOWN:
 			bD = true;
+			break;
+		case KeyEvent.VK_SPACE:
+			tc.m = fire();
 			break;
 		}
 		
@@ -135,7 +143,11 @@ public class Tank {
 		}
 	}
 	
-	
+	private Missile fire(){
+		if(m == null)
+			m = new Missile(x, y, Tank.Direction.R);
+		return m;
+	}
 	
 	
 	
