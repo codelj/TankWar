@@ -17,7 +17,7 @@ public class Tank {
 	private boolean bD = false;
 	
 	TankClientMy tc = null;
-	Missile m = null;
+//	Missile m = null;
 	
 	
 	enum Direction {L, LU, U, RU, R, RD, D, LD,STOP};
@@ -46,6 +46,9 @@ public class Tank {
 		int key = e.getKeyCode();
 		
 		switch (key) {
+		case KeyEvent.VK_SPACE:
+			tc.m = fire();
+			break;
 		case KeyEvent.VK_RIGHT:
 			bR = true;
 			break;
@@ -57,9 +60,6 @@ public class Tank {
 			break;
 		case KeyEvent.VK_DOWN:
 			bD = true;
-			break;
-		case KeyEvent.VK_SPACE:
-			tc.m = fire();
 			break;
 		}
 		
@@ -148,12 +148,16 @@ public class Tank {
 		}
 	}
 	
+	Missile	m;
+	
 	private 
 	Missile 
 	fire(){
 		int x = this.x + Tank.WIDTH/2 - Missile.WIDTH/2;
 		int y = this.y + Tank.HEIGHT/2 - Missile.HEIGHT/2;
-		if(m == null)
+		if(dir.equals(Direction.STOP))
+			m = null;
+		else 
 			m = new Missile(x, y, dir);
 		return m;
 	}
