@@ -37,19 +37,15 @@ public class Tank {
 		
 		switch (key) {
 		case KeyEvent.VK_RIGHT:
-//			x += 5;
 			bR = true;
 			break;
 		case KeyEvent.VK_LEFT:
-//			x -= 5;
 			bL = true;
 			break;
 		case KeyEvent.VK_UP:
-//			y -= 5;
 			bU = true;
 			break;
 		case KeyEvent.VK_DOWN:
-//			y += 5;
 			bD = true;
 			break;
 		}

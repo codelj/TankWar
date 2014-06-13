@@ -5,7 +5,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-//import java.awt.event.WindowListener;
 
 public class TankClientMy extends Frame{
 	
@@ -18,18 +17,12 @@ public class TankClientMy extends Frame{
 	
 	Image offScreenImage = null;
 	Tank myTank = new Tank(50, 50);
+	Missle m = new Missle(50, 50, Tank.Direction.R);
 	
 	int x = 100, y = 100;
 	
 	public void paint(Graphics g){
-//		Color c = g.getColor();
-//		g.setColor(Color.red);
-//		g.fillRoundRect(x, y, 30, 30, 10, 10);
-//		g.fillOval(myTank.x, myTank.y, 30, 30);
-//		g.setColor(c);
-//		
-//		y += 5;
-//		x += 5;
+		m.draw(g);
 		myTank.draw(g);
 	}
 
@@ -100,23 +93,6 @@ public class TankClientMy extends Frame{
 		public void keyPressed(KeyEvent e) {
 			// TODO Auto-generated method stub
 			myTank.keyPressed(e);
-//			super.keyPressed(e);
-//			int key = e.getKeyCode();
-//			
-//			switch (key) {
-//			case KeyEvent.VK_RIGHT:
-//				x += 5;
-//				break;
-//			case KeyEvent.VK_LEFT:
-//				x -= 5;
-//				break;
-//			case KeyEvent.VK_UP:
-//				y -= 5;
-//				break;
-//			case KeyEvent.VK_DOWN:
-//				y += 5;
-//				break;
-//			}
 		}
 
 		@Override
