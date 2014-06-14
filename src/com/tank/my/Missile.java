@@ -7,8 +7,8 @@ import com.tank.my.Tank.Direction;
 
 public class Missile {
 	
-	public static final int XSPEED = 10;
-	public static final int YSPEED = 10;
+	public static final int XSPEED = 15;
+	public static final int YSPEED = 15;
 	
 	public static final int WIDTH = 10;
 	public static final int HEIGHT = 10;

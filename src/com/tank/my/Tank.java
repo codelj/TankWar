@@ -22,6 +22,7 @@ public class Tank {
 	
 	enum Direction {L, LU, U, RU, R, RD, D, LD,STOP};
 	private Direction dir = Direction.STOP;
+	private Direction weaponDir = Direction.D;
 	
 
 	public Tank(int x, int y, TankClientMy tc ) {
@@ -35,9 +36,38 @@ public class Tank {
 	draw(Graphics g){
 		Color c = g.getColor();
 		g.setColor(Color.red);
-//		g.fillRoundRect(x, y, 30, 30, 10, 10);
 		g.fillOval(x, y, WIDTH, HEIGHT);
 		g.setColor(c);
+		
+		switch(weaponDir){
+		case L:
+			g.drawLine(x + Tank.WIDTH/2, y + Tank.HEIGHT/2, x, y + Tank.HEIGHT/2);
+			break;
+		case LU:
+			g.drawLine(x + Tank.WIDTH/2, y + Tank.HEIGHT/2, x, y);
+			break;
+		case U:
+			g.drawLine(x + Tank.WIDTH/2, y + Tank.HEIGHT/2, x + Tank.WIDTH/2, y);
+			break;
+		case RU:
+			g.drawLine(x + Tank.WIDTH/2, y + Tank.HEIGHT/2, x + Tank.WIDTH, y);
+			break;
+		case R:
+			g.drawLine(x + Tank.WIDTH/2, y + Tank.HEIGHT/2, x + Tank.WIDTH, y + Tank.HEIGHT/2);
+			break;
+		case RD:
+			g.drawLine(x + Tank.WIDTH/2, y + Tank.HEIGHT/2, x + Tank.WIDTH, y + Tank.HEIGHT);
+			break;
+		case D:
+			g.drawLine(x + Tank.WIDTH/2, y + Tank.HEIGHT/2, x + Tank.WIDTH/2, y + Tank.HEIGHT);
+			break;
+		case LD:
+			g.drawLine(x + Tank.WIDTH/2, y + Tank.HEIGHT/2, x, y + Tank.HEIGHT);
+			break;
+//		case STOP:
+//			break;
+		}
+		
 	}
 	
 	public 
@@ -46,9 +76,6 @@ public class Tank {
 		int key = e.getKeyCode();
 		
 		switch (key) {
-		case KeyEvent.VK_SPACE:
-			tc.m = fire();
-			break;
 		case KeyEvent.VK_RIGHT:
 			bR = true;
 			break;
@@ -102,6 +129,10 @@ public class Tank {
 			break;
 		}
 		locateDirection();
+		
+		if(this.dir != Direction.STOP){
+			this.weaponDir = this.dir;
+		}
 	}
 	
 	private
@@ -145,21 +176,29 @@ public class Tank {
 		case KeyEvent.VK_DOWN:
 			bD = false;
 			break;
+		case KeyEvent.VK_SPACE:
+//			tc.missiles.add(fire());
+			fire();
+			break;
 		}
 	}
 	
 	Missile	m;
 	
 	private 
-	Missile 
+	void 
 	fire(){
 		int x = this.x + Tank.WIDTH/2 - Missile.WIDTH/2;
 		int y = this.y + Tank.HEIGHT/2 - Missile.HEIGHT/2;
 		if(dir.equals(Direction.STOP))
 			m = null;
-		else 
+		else {
 			m = new Missile(x, y, dir);
-		return m;
+			tc.missiles.add(m);
+		}
+		
+		
+//		return m;
 	}
 	
 	

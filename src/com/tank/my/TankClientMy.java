@@ -6,6 +6,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import java.util.List;
+import java.util.ArrayList;
+
+
 public class TankClientMy extends Frame{
 	
 /*	
@@ -17,14 +21,21 @@ public class TankClientMy extends Frame{
 	
 	private Image offScreenImage = null;
 	private Tank myTank = new Tank(50, 50, this);
-	Missile m = null;
+	
+//	Missile m = null;
+	List<Missile> missiles = new ArrayList<Missile>();
 	
 	
 	public 
 	void 
 	paint(Graphics g){
-		if(m != null)
-			m.draw(g);
+		g.drawString("missiles count:" + missiles.size(), 10, 50);
+//		if(m != null)
+//			m.draw(g);
+		for(int i =0 ; i<missiles.size(); i++){
+			Missile m = missiles.get(i);
+			m .draw(g);
+		}
 		myTank.draw(g);
 	}
 
